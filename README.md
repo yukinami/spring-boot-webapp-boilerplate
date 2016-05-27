@@ -191,9 +191,16 @@ Spring Data本身对分页提供了较好的支持，只需要在Controller中�
 默认也会激活develop profile，加载`import.sql`中的种子数据。为了避免开发环境数据的影响，使用类注解`@ActiveProfiles("test")`来激活
 test profile，然后使用`test/resources/db/migration/test/import.sql`来初始化测试环境的种子数据。
 
+NOTE: 这里需要注意的是虽然每个测试类会重新加载ApplicationContext，但是H2数据库并不会重新启动。但是由于加载ApplicationContext的过程中
+Hibernate会drop表并重新创建，执行`import.sql`导入种子数据，所以数据库仍然是一个干净的状态。但是如果表本身并不是通过Hibernate创建而是通过
+flyway创建的，那就要注意了，表没有被drop重新创建，但是`import.sql`会照样执行，所以可能会存在数据重复的情况。所以建议通过flyway创建表在
+`import.sql`中进行插入数据时，最好写DELETE一下该表所有的数据。
+
 ##### Data Fixture
 
 为了避免全局数据对测试的影响，测试环境的`import.sql`中应该只包括种子数据。具体的测试数据通过`@Sql`来加载。
+
+NOTE: 如果@Sql中操作的表和`import.sql`中有重复的，建议在@Sql执行的文件中先DELETE一次，避免数据干扰。
 
 #### 页面集成测试
 

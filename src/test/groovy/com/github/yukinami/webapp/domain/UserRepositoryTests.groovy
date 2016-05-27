@@ -25,15 +25,7 @@ class UserRepositoryTests extends Specification {
         def users = repository.findAll()
 
         then:
-        users.size() == 4
+        users.size() == 3
     }
 
-    @Sql(scripts = "find-all-should-return-all-users-fixtures.sql")
-    def "find all should return all"() {
-        when:
-        def users = repository.findAll()
-
-        then:
-        users.size() == 4
-    }
 }

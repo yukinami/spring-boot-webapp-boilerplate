@@ -7,6 +7,7 @@ import geb.spock.GebReportingSpec
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootContextLoader
 import org.springframework.security.test.context.support.WithMockUser
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.web.WebAppConfiguration
 import org.springframework.test.web.servlet.htmlunit.webdriver.MockMvcHtmlUnitDriverBuilder
@@ -17,6 +18,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 /**
  * @author snowblink on 16/5/25.
  */
+@ActiveProfiles("test")
 @ContextConfiguration(loader = SpringBootContextLoader.class, classes = SpringBootWebAppBoilerplateApplication)
 @WebAppConfiguration
 @WithMockUser
@@ -39,7 +41,7 @@ class UserIndexIntegrationTests extends GebReportingSpec {
 
         expect:
         menu.hasClass("active")
-        usersTable.find("tbody tr").size() == 4 //check record count
+        usersTable.find("tbody tr").size() == 3 //check record count
 
     }
 
