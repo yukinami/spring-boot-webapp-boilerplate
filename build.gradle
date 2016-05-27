@@ -64,6 +64,13 @@ dependencies {
 	compile("org.webjars:bootstrap:${bootstrapVersion}")
 }
 
+jacocoTestReport {
+	reports {
+		xml.enabled = true
+		html.enabled = true
+	}
+}
+
 task buildDocker(type: Docker, dependsOn: build) {
 	applicationName = jar.baseName
 	dockerfile = file('src/main/docker/Dockerfile')
