@@ -1,0 +1,67 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		maven { url "http://repo.spring.io/snapshot" }
+		maven { url "http://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'spring-boot-webapp-boilerplate'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "http://repo.spring.io/snapshot" }
+	maven { url "http://repo.spring.io/milestone" }
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-devtools')
+	compile("org.projectlombok:lombok:${lombokVersion}")
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.codehaus.groovy:groovy')
+
+	compile("net.sourceforge.nekohtml:nekohtml")
+	compile('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
+	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
+	compile("io.github.jpenren:thymeleaf-spring-data-dialect:${thymeleafSpringDataDialectVersion}")
+
+	runtime('org.flywaydb:flyway-core')
+	runtime('com.h2database:h2')
+	runtime('mysql:mysql-connector-java')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.spockframework:spock-spring')
+	testCompile("org.gebish:geb-spock:${gebSpockVersion}")
+	testCompile("org.seleniumhq.selenium:selenium-api")
+	testCompile("org.seleniumhq.selenium:htmlunit-driver")
+	testCompile("org.springframework.security:spring-security-test")
+
+	//webjars
+	compile('org.webjars:webjars-locator')
+	compile("org.webjars:bootstrap:${bootstrapVersion}")
+}
+
+
+eclipse {
+	classpath {
+		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+	}
+}

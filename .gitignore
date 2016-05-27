@@ -1,0 +1,17 @@
+.idea/
+*.iml
+*.imi
+*.ipr
+target
+.settings
+.classpath
+.project
+.DS_Store
+build/
+.gradle/
+private.txt
+*.log
+classes/
+generated-src
+.env
+javadoc/
