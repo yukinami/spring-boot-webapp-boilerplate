@@ -1,6 +1,9 @@
 # Spring Boot WebApp Boilerplate
 
-[![Build Status](https://travis-ci.org/yukinami/spring-boot-webapp-boilerplate.svg?branch=master)](https://travis-ci.org/yukinami/spring-boot-webapp-boilerplate)
+[![Build Status Img]][Build Status]
+[![GitHub version Img]][GitHub version]
+[![Coverage Status Img]][Coverage Status]
+
 
 Spring Boot WebApp Boilerplate是一个基于Spring Boot，使用服务器端技术的Web应用模板。
 
@@ -33,7 +36,7 @@ Spring Boot WebApp Boilerplate是一个基于Spring Boot，使用服务器端技
 
 ## 提供的功能实现
 
-项目采用基于[DDD][1]的应用架构。经典的DDD示例应用请参考[这里][2]。
+项目采用基于[DDD]的应用架构。经典的DDD示例应用请参考[这里][dddsample-core]。
 
 目录结构
 
@@ -143,7 +146,7 @@ H2内存数据库创建完schema后需要填充一些种子数据以供程序的
 #### 模板layout
 
 Layouts文件定义在`resources/templates/layouts`目录下。
-默认使用了[html5boilerplate][4]作为模板的基础layout。Layout的实现使用了[thymeleaf-layout-dialect][5]库，具体的使用参考文档。
+默认使用了[html5boilerplate]作为模板的基础layout。Layout的实现使用了[thymeleaf-layout-dialect]库，具体的使用参考文档。
 
 #### Helper方法的扩展
 
@@ -179,7 +182,7 @@ ApplicationDialect来实现扩展。
 Spring Data本身对分页提供了较好的支持，只需要在Controller中用Pageable来接收分页参数，然后传递给Repository接口，即可实现分页查询。
 分页的默认页长和排序条件可以通过`@PageableDefault`注解来实现。
 
-分页结果的页面显示，通过基于thymeleaf和Spring Data的`Page`对象的[thymeleaf-spring-data-dialect][3]来实现，具体参考文档。需要自定义输出
+分页结果的页面显示，通过基于thymeleaf和Spring Data的`Page`对象的[thymeleaf-spring-data-dialect]来实现，具体参考文档。需要自定义输出
 的分页信息中的文字的情况，则通过`resources/thymeleaf-spring-data-dialect/PaginationSummary_zh_CN.properties`文件来实现。
 
 ### 测试
@@ -216,8 +219,15 @@ NOTE: 如果@Sql中操作的表和`import.sql`中有重复的，建议在@Sql执
 
 通过命令行执行`./gradlew bootRun`来运行，或者导入IDE后直接运行`SpringBootWebAppBoilerplateApplication.java`文件
 
-[1]: http://www.codeproject.com/Articles/339725/Domain-Driven-Design-Clear-Your-Concepts-Before-Yo
-[2]: https://github.com/citerus/dddsample-core
-[3]: https://github.com/jpenren/thymeleaf-spring-data-dialect
-[4]: https://html5boilerplate.com/
-[5]: https://github.com/ultraq/thymeleaf-layout-dialect
+[DDD]: http://www.codeproject.com/Articles/339725/Domain-Driven-Design-Clear-Your-Concepts-Before-Yo
+[dddsample-core]: https://github.com/citerus/dddsample-core
+[thymeleaf-spring-data-dialect]: https://github.com/jpenren/thymeleaf-spring-data-dialect
+[html5boilerplate]: https://html5boilerplate.com/
+[thymeleaf-layout-dialect]: https://github.com/ultraq/thymeleaf-layout-dialect
+[Build Status Img]: https://travis-ci.org/yukinami/spring-boot-webapp-boilerplate.svg?branch=master
+[Build Status]: https://travis-ci.org/yukinami/spring-boot-webapp-boilerplate
+[GitHub version Img]: https://badge.fury.io/gh/yukinami%2Fspring-boot-webapp-boilerplate.svg
+[GitHub version]: https://badge.fury.io/gh/yukinami%2Fspring-boot-webapp-boilerplate
+[Coverage Status Img]: https://coveralls.io/repos/github/yukinami/spring-boot-webapp-boilerplate/badge.svg?branch=master
+[Coverage Status]: https://coveralls.io/github/yukinami/spring-boot-webapp-boilerplate?branch=master
+
