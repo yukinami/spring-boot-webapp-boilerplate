@@ -18,6 +18,7 @@ Spring Boot WebApp Boilerplate是一个基于Spring Boot，使用服务器端技
 - Groovy 书写测试脚本
 - Spock 基于BDD的测试框架
 - Gradle 构建工具
+- Docker 容器技术
 
 ## 提高开发效率
 
@@ -218,6 +219,11 @@ NOTE: 如果@Sql中操作的表和`import.sql`中有重复的，建议在@Sql执
 ## 运行
 
 通过命令行执行`./gradlew bootRun`来运行，或者导入IDE后直接运行`SpringBootWebAppBoilerplateApplication.java`文件
+
+## 构建
+
+- `./gradlew build`构建可执行jar包
+- `./gradlew buildDocker`构建docker镜像
 
 [DDD]: http://www.codeproject.com/Articles/339725/Domain-Driven-Design-Clear-Your-Concepts-Before-Yo
 [dddsample-core]: https://github.com/citerus/dddsample-core
