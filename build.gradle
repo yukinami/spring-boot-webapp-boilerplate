@@ -19,11 +19,9 @@ apply plugin: 'docker'
 apply plugin: 'jacoco'
 apply plugin: "com.github.kt3k.coveralls"
 
+group = 'com.github.yukinami'
+version = '0.1'
 
-jar {
-	baseName = 'spring-boot-webapp-boilerplate'
-	version = '0.1'
-}
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
