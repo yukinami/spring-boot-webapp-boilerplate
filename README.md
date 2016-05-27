@@ -1,5 +1,7 @@
 # Spring Boot WebApp Boilerplate
 
+[![Build Status](https://travis-ci.org/yukinami/spring-boot-webapp-boilerplate.svg?branch=master)](https://travis-ci.org/yukinami/spring-boot-webapp-boilerplate)
+
 Spring Boot WebApp Boilerplate是一个基于Spring Boot，使用服务器端技术的Web应用模板。
 
 ## 技术栈
