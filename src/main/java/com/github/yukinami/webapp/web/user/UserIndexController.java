@@ -25,7 +25,7 @@ public class UserIndexController {
         Page<User> users = userRepository.findAll(pageable);
 
         model.addAttribute("users", users);
-        return "/users/index";
+        return "users/index";
     }
 
 
