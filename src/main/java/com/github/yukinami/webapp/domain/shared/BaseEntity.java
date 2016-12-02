@@ -19,7 +19,7 @@ public abstract class BaseEntity<T extends BaseEntity> implements Entity<T> {
     @GeneratedValue
     protected Long id;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
 
     @Column(name = "updated_at")
