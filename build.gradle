@@ -62,6 +62,10 @@ dependencies {
 	compile("org.webjars:bootstrap:${bootstrapVersion}")
 }
 
+bootRepackage {
+	excludeDevtools = true
+}
+
 jacocoTestReport {
 	reports {
 		xml.enabled = true
