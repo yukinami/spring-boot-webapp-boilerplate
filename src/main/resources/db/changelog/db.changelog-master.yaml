@@ -1,0 +1,49 @@
+databaseChangeLog:
+
+- changeSet:
+    id: 1
+    author: UNKNOWN
+    changes:
+      - createTable:
+          tableName: authorities
+          columns:
+            - column:
+                name: username
+                type: varchar(50)
+                constraints:
+                  nullable: false
+            - column:
+                name: authority
+                type: varchar(50)
+                constraints:
+                  nullable: false
+
+      - createTable:
+          tableName: users
+          columns:
+            - column:
+                name: username
+                type: varchar(50)
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: password
+                type: varchar(500)
+                constraints:
+                  nullable: false
+            - column:
+                name: enabled
+                type: boolean
+                constraints:
+                  nullable: false
+
+      - createIndex:
+          indexName: ix_auth_username
+          unique: true
+          tableName: authorities
+          columns:
+            - column:
+                name: username
+            - column:
+                name: authority

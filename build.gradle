@@ -46,7 +46,7 @@ dependencies {
 	compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
 	compile("io.github.jpenren:thymeleaf-spring-data-dialect:${thymeleafSpringDataDialectVersion}")
 
-	runtime('org.flywaydb:flyway-core')
+	runtime('org.liquibase:liquibase-core')
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
 
