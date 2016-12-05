@@ -1,33 +1,46 @@
 package com.github.yukinami.webapp.view.thymeleaf;
 
 import com.github.yukinami.webapp.view.helper.UrlHelper;
-import org.thymeleaf.context.IProcessingContext;
+import org.thymeleaf.context.IExpressionContext;
 import org.thymeleaf.dialect.AbstractDialect;
-import org.thymeleaf.dialect.IExpressionEnhancingDialect;
+import org.thymeleaf.dialect.IExpressionObjectDialect;
+import org.thymeleaf.expression.IExpressionObjectFactory;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author snowblink on 16/5/25.
  */
-public class ApplicationDialect extends AbstractDialect implements IExpressionEnhancingDialect {
+public class ApplicationDialect extends AbstractDialect implements IExpressionObjectDialect {
 
-    private static final Map<String, Object> EXPRESSION_OBJECTS;
-    static {
-        Map<String, Object> objects = new HashMap<>();
-        objects.put("urlHelper", new UrlHelper());
-        EXPRESSION_OBJECTS = Collections.unmodifiableMap(objects);
+    public ApplicationDialect() {
+        super("app");
     }
 
     @Override
-    public Map<String, Object> getAdditionalExpressionObjects(IProcessingContext processingContext) {
-        return EXPRESSION_OBJECTS;
-    }
+    public IExpressionObjectFactory getExpressionObjectFactory() {
 
-    @Override
-    public String getPrefix() {
-        return null;
+        Map<String, Object> expressionObjects = new HashMap<>();
+        expressionObjects.put("urlHelper", new UrlHelper());
+
+        return new IExpressionObjectFactory() {
+
+            @Override
+            public Set<String> getAllExpressionObjectNames() {
+                return expressionObjects.keySet();
+            }
+
+            @Override
+            public Object buildObject(IExpressionContext context, String expressionObjectName) {
+                return expressionObjects.get(expressionObjectName);
+            }
+
+            @Override
+            public boolean isCacheable(String expressionObjectName) {
+                return true;
+            }
+        };
     }
 }

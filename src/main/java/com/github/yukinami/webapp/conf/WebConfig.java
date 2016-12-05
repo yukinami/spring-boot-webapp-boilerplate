@@ -20,12 +20,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
+    public SpringDataDialect springDataDialect() {
+        return new SpringDataDialect();
+    }
+
+    @Bean
     public IDialect applicationDialect() {
         return new ApplicationDialect();
     }
 
-    @Bean
-    public IDialect springDataDialect() {
-        return new SpringDataDialect();
-    }
 }
