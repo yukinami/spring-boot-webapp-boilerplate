@@ -12,14 +12,14 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'application'
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
-apply plugin: 'com.bmuschko.docker-remote-api'
+apply plugin: 'com.bmuschko.docker-java-application'
 apply plugin: 'jacoco'
 apply plugin: "com.github.kt3k.coveralls"
 
-import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 
 group = 'com.github.yukinami'
 version = '0.1'
@@ -79,16 +79,8 @@ jacocoTestReport {
 
 docker {
 	url 'http://192.168.1.6:2375'
-}
-
-task buildImage(type: DockerBuildImage, dependsOn: build) {
-	inputDir = file('src/main/docker/')
-	tag = "yukinami/${jar.baseName}"
-	doFirst {
-		copy {
-			from jar
-			into inputDir
-		}
+	javaApplication {
+		tag = "yukinami/${jar.baseName}"
 	}
 }
 
